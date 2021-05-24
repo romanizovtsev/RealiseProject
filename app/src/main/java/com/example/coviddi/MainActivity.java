@@ -1,4 +1,5 @@
     package com.example.coviddi;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -6,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View.OnClickListener;
@@ -33,17 +35,25 @@ import java.util.Locale;
     GraphView graphView;
     ImageButton button_settings;
     Button Read_info;
+    int flagOpen;
     Button Start_test;
     SharedPreferences sPref;
         Spinner spinner;
-    private long backPressedTime;
-    private Toast backToast;
+
     int flagcome;
-    String locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        flagOpen=0;
+
+        if(savedInstanceState!=null)
+            switch(savedInstanceState.getInt("flagOpen"))
+            { case 1:
+                Intent intent = new Intent( MainActivity.this, Settings_Activity.class);
+                startActivity(intent); finish();
+                break;
+            }
         getLocale();
         flagcome=0;
         DataDbHelper dh=new DataDbHelper(this);
@@ -96,6 +106,7 @@ import java.util.Locale;
             @Override
             public void onClick(View v) {
                 try{
+                    flagOpen=1;
                     Intent intent = new Intent( MainActivity.this, Settings_Activity.class);
                     startActivity(intent); finish();
 
@@ -109,7 +120,7 @@ import java.util.Locale;
         Read_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
+                try{flagOpen=2;
                     Intent intent = new Intent(MainActivity.this,  InfoActivity.class);
                     startActivity(intent);
                 }catch (Exception e){
@@ -122,6 +133,7 @@ import java.util.Locale;
             @Override
             public void onClick(View v) {
                 try{
+                    flagOpen=3;
                     Intent intent = new Intent(MainActivity.this,  Test_activity.class);
                     startActivity(intent);
                 }catch (Exception e){
@@ -166,7 +178,15 @@ Log.e(sPref.getInt("selecteds",1)+"","Страна");
     spinner.setSelection(sPref.getInt("selecteds",0));
 
 }
-public void getLocale()
+
+        @Override
+        public void onSaveInstanceState(Bundle outState) {
+            super.onSaveInstanceState(outState);
+            Log.e("FFFFFFFFFFFFFFFFF","Берем локаль");
+            outState.putInt("flagOpen",2);
+        }
+
+        public void getLocale()
 {
     Log.e("Берем локаль","Берем локаль");
     sPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);

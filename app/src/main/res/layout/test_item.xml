@@ -40,18 +40,21 @@
                 android:id="@+id/answer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/up"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/up"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/answer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/up"
                 android:text="RadioButton" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
