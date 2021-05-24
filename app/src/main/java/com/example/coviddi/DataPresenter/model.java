@@ -1,20 +1,30 @@
-package com.example.coviddi;
+package com.example.coviddi.DataPresenter;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
+
 import com.example.coviddi.DataContract.Data;
 import com.example.coviddi.DataContract.DataDbHelper;
+import com.example.coviddi.DataModels.post1;
+import com.example.coviddi.Network.NetworkService;
+import com.example.coviddi.Presenter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 import static java.lang.Math.abs;
+
 public class model {
     DataDbHelper dh;
     String countryNow = "";
@@ -76,8 +86,7 @@ public class model {
     }
 
 
-
-    public void getInfoTodays(String country, String status, String DateYers,String DateNow) {
+    public void getInfoTodays(String country, String status, String DateYers, String DateNow) {
 
 
         clearAll(country);
@@ -88,13 +97,13 @@ public class model {
                     @Override
                     public void onResponse(@NonNull Call<post1> call, @NonNull Response<post1> response) {
                         post1 post = response.body();
-                        String YersValue=post.getAll().getDates().get(DateYers);
-                        String TodayValue=post.getAll().getDates().get(DateNow);
+                        String YersValue = post.getAll().getDates().get(DateYers);
+                        String TodayValue = post.getAll().getDates().get(DateNow);
 
 
-                            map.put(status,  YersValue);
-                            map.put(status, abs(Integer.parseInt(TodayValue) - Integer.parseInt(map.get(status))) + "");
-                            flag++;
+                        map.put(status, YersValue);
+                        map.put(status, abs(Integer.parseInt(TodayValue) - Integer.parseInt(map.get(status))) + "");
+                        flag++;
 
                         if ((map.size() == 3) && (flag == 3)) {
                             presenter.showInfo(map);
@@ -216,9 +225,8 @@ public class model {
                     + Data.DataGraphin.TABLE_NAME + " WHERE " + Data.DataGraphin.COLUMN_COUNTRY + insertQuerys2;
             cursor2 = dB.rawQuery(query, null);
             cursor2.moveToLast();
-         
-            for(int i=0;i<6;i++)
-            {
+
+            for (int i = 0; i < 6; i++) {
                 cursor2.moveToPrevious();
             }
             TipoMap.add(cursor2.getString(cursor2
@@ -267,68 +275,38 @@ public class model {
             map.clear();
             cursor2.close();
             return true;
-        }
-        else {
+        } else {
             cursor2.close();
             return false;
         }
     }
-    public void clearAll(String country)
-    {
-        if (countryNow==country)
-        {
+
+    public void clearAll(String country) {
+        if (countryNow == country) {
             map.clear();
             mapGraph.clear();
             GraphListDate.clear();
             GraphListValue.clear();
         }
-        countryNow=country;
+        countryNow = country;
     }
-    public int difference(String date1,String date2)
-    {Date date11=new Date();
-        Date date22=new Date();
+
+    public int difference(String date1, String date2) {
+        Date date11 = new Date();
+        Date date22 = new Date();
         SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("yyyy-MM-dd");
         try {
-          date22=format.parse(date2);
+            date22 = format.parse(date2);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            date11=format.parse(date1);
+            date11 = format.parse(date1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return (int)(date22.getTime()-date11.getTime())/(1000*60*60*24);
+        return (int) (date22.getTime() - date11.getTime()) / (1000 * 60 * 60 * 24);
     }
-      /*  public void getInfoToday(String country, String status, String Date) {
-        clearAll(country);
-        NetworkService.getInstance()
-                .getJSONApi()
-                .getPost(country, status)
-                .enqueue(new Callback<post1>() {
-                    @Override
-                    public void onResponse(@NonNull Call<post1> call, @NonNull Response<post1> response) {
-                        post1 post = response.body();
-                        if (!map.containsKey(status)) {
-                            map.put(status, post.getAll().getDates().get(Date) + "");
 
-                        } else {
-                            map.put(status, abs(Integer.parseInt(post.getAll().getDates().get(Date) + "") - Integer.parseInt(map.get(status))) + "");
-                            flag++;
-                        }
-                        if ((map.size() == 3) && (flag == 3)) {
-                            presenter.showInfo(map);
-                            flag = 0;
-                            putToSQL(country, map, DateNow);
-                            map.clear();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<post1> call, @NonNull Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
-    }*/
 }

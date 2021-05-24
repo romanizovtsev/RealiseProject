@@ -1,4 +1,4 @@
-package com.example.coviddi;
+package com.example.coviddi.ViewModels;
 
 
 import android.app.AlertDialog;
@@ -8,11 +8,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.coviddi.R;
+
 public class About_App_Fragment extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         return builder
                 .setTitle("About App")
                 .setIcon(android.R.drawable.ic_lock_lock)
