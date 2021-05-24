@@ -5,16 +5,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/back4"
     >
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:gravity="center"
-        android:text=" Результат"
-        android:textStyle="bold"
+        android:text="@string/Resultname"
         android:textColor="@color/black"
-        android:textSize="35sp" />
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linear2"
@@ -55,7 +56,7 @@
                 android:layout_gravity="center"
 
                 android:background="@drawable/buttonround1"
-                android:text="Завершить" />
+                android:text="@string/close" />
 
             <Button
                 android:id="@+id/restart"
@@ -64,7 +65,7 @@
                 android:layout_gravity="center"
 
                 android:background="@drawable/buttonround1"
-                android:text="Повторить" />
+                android:text="@string/restart" />
         </LinearLayout>
     </LinearLayout>
 

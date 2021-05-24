@@ -23,7 +23,7 @@
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="Тест" />>
+                android:text="@string/Test" />>
         </androidx.appcompat.widget.Toolbar>
 
 

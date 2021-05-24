@@ -1,4 +1,4 @@
-package com.example.coviddi.DataContract;
+package com.example.coviddi;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-
-import com.example.coviddi.R;
-import com.example.coviddi.Test_activity;
 
 public class TestResult extends Fragment {
     int result;
@@ -25,7 +22,7 @@ public class TestResult extends Fragment {
         Button restart=rootView.findViewById(R.id.restart);
         result=getArguments().getInt("score");
         TextView res=rootView.findViewById(R.id.textView8);
-        res.setText("Вы набрали "+result+" баллов");
+        res.setText(getResources().getText(R.string.Youtake)+" "+result+" "+getResources().getText(R.string.score));
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

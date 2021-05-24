@@ -2,6 +2,11 @@
     <string name="app_name">Covid DI</string>
     <string name="StatTitle">Statistics</string>
     <string name="StatTitle2">Morbidity dynamics</string>
+    <string name="Resultname">Result</string>
+    <string name="close">Close</string>
+    <string name="restart">Restart</string>
+    <string name="Youtake">You have scored</string>
+    <string name="score">points</string>
     <string name="Test">Test</string>
     <string-array name="Country">
         <item>Russia</item>
@@ -10,7 +15,7 @@
         <item>Germany</item>
         <item>United Kingdom</item>
     </string-array>
-
+    <string name="check">Results</string>
     <string name="ConfTitle">Confirmed \n cases</string>
     <string name="RecovTitle">Recovered</string>
     <string name="DeathTitle">Deaths</string>

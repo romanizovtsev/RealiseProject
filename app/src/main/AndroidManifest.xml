@@ -40,6 +40,7 @@
         <activity
             android:name=".Test_activity"
             android:screenOrientation="portrait">
+            android:theme="@style/Theme.CovidDI">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

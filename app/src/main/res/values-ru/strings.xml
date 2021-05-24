@@ -2,15 +2,21 @@
     <string name="app_name">Covid DI</string>
     <string name="StatTitle">Статистика</string>
     <string name="Test">Тест</string>
+    <string name="Resultname">Результат</string>
     <string name="StatTitle2">Динамика заболеваемости</string>
+    <string name="close">Закрыть</string>
+    <string name="Youtake">Вы набрали</string>
+    <string name="score">баллов</string>
+    <string name="restart">Повторить</string>
     <string-array name="Country">
 
         <item>Россия</item>
         <item>Беларусь</item>
         <item>Франция</item>
+        <item>Германия</item>
         <item>Англия</item>
     </string-array>
-
+    <string name="check">Проверить</string>
     <string name="ConfTitle">Заболевших</string>
     <string name="RecovTitle">Выздоровевших</string>
     <string name="DeathTitle">Смертей</string>

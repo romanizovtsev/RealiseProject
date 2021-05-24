@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#aaeef7">
-
+>
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -14,8 +13,9 @@
         android:foregroundGravity="center_horizontal"
         android:gravity="center"
         android:text="@string/feed_back_click"
-        android:textColor="#074951"
+        android:textColor="@color/up"
         android:textSize="20sp"
+      android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

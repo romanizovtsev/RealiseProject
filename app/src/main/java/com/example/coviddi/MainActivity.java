@@ -1,7 +1,12 @@
     package com.example.coviddi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import android.content.Intent;
@@ -17,7 +22,10 @@ import android.widget.Toast;
 
 import com.example.coviddi.DataContract.DataDbHelper;
 import com.jjoe64.graphview.GraphView;
-public class MainActivity extends AppCompatActivity  {
+
+import java.util.Locale;
+
+    public class MainActivity extends AppCompatActivity  {
     private String[] AllArray;
     private Presenter presenter;
     private int selected1;
@@ -26,14 +34,22 @@ public class MainActivity extends AppCompatActivity  {
     ImageButton button_settings;
     Button Read_info;
     Button Start_test;
+    SharedPreferences sPref;
+        Spinner spinner;
     private long backPressedTime;
     private Toast backToast;
+    int flagcome;
+    String locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        getLocale();
+        flagcome=0;
         DataDbHelper dh=new DataDbHelper(this);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
 
         button_settings=(ImageButton)findViewById(R.id.Settings_Button);
         Read_info=(Button)findViewById(R.id.onfoBut);
@@ -45,8 +61,9 @@ public class MainActivity extends AppCompatActivity  {
 
         graphView=(GraphView) findViewById(R.id.graphView);
         presenter=new Presenter(this);
-        final Spinner spinner = findViewById(R.id.spinner);
+
         AllArray= getResources().getStringArray(R.array.Country);
+        spinner = findViewById(R.id.spinner);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, AllArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -54,10 +71,24 @@ public class MainActivity extends AppCompatActivity  {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
-               selected1=selectedItemPosition;
-            presenter.loadCache(selected1);
+            if(flagcome==0)
+            {
+                getcountry();
+                presenter.loadCache(selected1);
+                flagcome=1;
+            }
+            else {
+                selected1 = selectedItemPosition;
+                presenter.loadCache(selected1);
+                sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor eds = sPref.edit();
+                Log.e("Кладу страну",selected1+"");
+                eds.putInt("selecteds", selected1);
+                eds.apply();
+            }
             }
             public void onNothingSelected(AdapterView<?> parent) {
+            getcountry();
             }
         });
         //обработка переходов
@@ -65,8 +96,9 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 try{
-                    Intent intent = new Intent(MainActivity.this,  Settings_Activity.class);
+                    Intent intent = new Intent( MainActivity.this, Settings_Activity.class);
                     startActivity(intent); finish();
+
                 }catch (Exception e){
                 }
             }
@@ -126,6 +158,54 @@ public class MainActivity extends AppCompatActivity  {
         presenter.onDestroy();
         super.onDestroy();
     }
+public void getcountry()
+{
+    sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+Log.e(sPref.getInt("selecteds",1)+"","Страна");
+    spinner.setSelection(sPref.getInt("selecteds",0));
+
+}
+public void getLocale()
+{
+    Log.e("Берем локаль","Берем локаль");
+    sPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+
+    String savedText = sPref.getString("loc", "NO");
+    Toast.makeText(MainActivity.this, savedText, Toast.LENGTH_SHORT).show();
+    Resources res = getResources();
+    // Change locale settings in the app.
+    DisplayMetrics dm = res.getDisplayMetrics();
+    android.content.res.Configuration conf = res.getConfiguration();
+    conf.locale = new Locale(savedText);
+    res.updateConfiguration(conf, dm);
+    this.setContentView(R.layout.main_activity);
 
 
+}
+    /*    @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (data == null) {
+                return;
+            }
+            Log.e("Вернулся",data.getStringExtra("locale"));
+           if(data.getStringExtra("locale")!=locale)
+           {
+               Log.e("Внутри",data.getStringExtra("locale"));
+               Resources res = this.getResources();
+               // Change locale settings in the app.
+               DisplayMetrics dm = res.getDisplayMetrics();
+               Configuration conf = res.getConfiguration();
+               conf.locale = new Locale(data.getStringExtra("locale"));
+               res.updateConfiguration(conf, dm);
+               Intent intent = getIntent();
+               finish();
+               startActivity(intent);
+
+               //this.onRestart();
+              // this.onRestart();
+           }
+
+        }*/
 }

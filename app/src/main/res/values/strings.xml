@@ -2,12 +2,18 @@
     <string name="app_name">Covid DI</string>
     <string name="StatTitle">Статистика</string>
     <string name="Test">Тест</string>
+    <string name="Resultname">Результат</string>
+    <string name="close">Закрыть</string>
+    <string name="restart">Повторить</string>
+    <string name="Youtake">Вы набрали</string>
+    <string name="score">баллов</string>
     <string name="StatTitle2">Динамика заболеваемости</string>
     <string-array name="Country">
 
         <item>Россия</item>
         <item>Беларусь</item>
         <item>Франция</item>
+        <item>Германия</item>
         <item>Англия</item>
     </string-array>
     <string-array name="CountryEn">
@@ -98,4 +104,5 @@
      инфекции - это лихорадка. Но следует отметить, что высокая температура
      также не является гарантированным симптомом. Так, из 1099 пациентов, поступивших в больницу Ухани с
      COVID-19, температура выше 37,5 градусов наблюдалась только у 44% пациентов.</string>
+    <string name="check">Проверить</string>
 </resources>

@@ -2,7 +2,8 @@ package com.example.coviddi;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -23,18 +23,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import com.example.coviddi.DataContract.TestResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Test_activity extends AppCompatActivity {
     private FirebaseFirestore database;
@@ -42,10 +39,12 @@ public class Test_activity extends AppCompatActivity {
     private List<View> allEds;
     TextView Question;
     int i;
+    String collectionname;
     TestResult fragment;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     RadioButton Answer1,Answer2,Answer3;
+
     ArrayList<Integer> ans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,13 @@ public class Test_activity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.testlayout1);
         database = FirebaseFirestore.getInstance();
-        allEds = new ArrayList<View>();
+        allEds = new ArrayList<>();
+        SharedPreferences sPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        String savedText = sPref.getString("loc", "NO");
+        if(savedText=="ru")
+        collectionname="tests";
+        else
+            collectionname="tests2";
         ans=new ArrayList<>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,7 +67,7 @@ public class Test_activity extends AppCompatActivity {
 
         final LinearLayout linear = findViewById(R.id.linear);
         i=0;
-        database.collection("tests")
+        database.collection(collectionname)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -83,7 +88,7 @@ public class Test_activity extends AppCompatActivity {
                                     linear.addView(nolImage);
                                     Question.setText(document.getString("Question"));
                                     Answer1.setText(document.getString("Answer1"));
-                                    Answer2.setText(document.getString("Answer1"));
+                                    Answer2.setText(document.getString("Answer2"));
                                     if (document.getString("Answer3") != null)
                                         Answer3.setText(document.getString("Answer3"));
                                     else
@@ -102,7 +107,7 @@ public class Test_activity extends AppCompatActivity {
                                             ans.add(Integer.parseInt(document.getString("91")));
                                     }
                                     Button check=new Button(getApplicationContext());
-                                    check.setText("Проверить");
+                                    check.setText(getResources().getText(R.string.check));
                                     check.setLayoutParams(
                                             new LinearLayout.LayoutParams(
                                                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -135,8 +140,9 @@ public class Test_activity extends AppCompatActivity {
                                                 Log.e("OTV",otv+"");
                                                 if(otv==ans.get(f)) {
                                                     score++;
-                                                    otv=0;
+
                                                 }
+                                                otv=0;
 
                                             }
                                             Log.e("Результат", score+"");
