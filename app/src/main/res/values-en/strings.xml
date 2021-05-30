@@ -32,26 +32,26 @@
     <string name="Language">Language</string>
     <string name="About_app">About App</string>
     <string name="Info_name">Actual information about Covid-19</string>
-    <string name="Obz_sved">COVID-19. General information</string>
+    <string name="Obz_sved">General information</string>
     <string name="info_obz">
-        As of today, it is believed that COVID-19 has passed
+        \t As of today, it is believed that COVID-19 has passed
         to humans from bats. Did it happen directly, or through an intermediate
-        the owner is not known for certain.
-Incubation period of coronavirus: it is considered (!) That the incubation period lasts up to 14 days.
-        In research 1099
+        the owner is not known for certain. \n
+\t Incubation period of coronavirus: it is considered (!) That the incubation period lasts up to 14 days. \n
+        \t In research 1099
         patients with a confirmed diagnosis average
         the incubation period for COVID-19 was four days
 Modeling in a study of 181 patients showed that 2.5%
-        of cases, symptoms develop within 2.2 days, and 97.5%
+        of cases, symptoms develop within 2.2 days. \n and 97.5%
         cases within 11.5 days. Average incubation period
         in this study was 5.1 days.</string>
 
     <string name="Simp">
-        To date, there is no complete understanding of
+        \t To date, there is no complete understanding of
         the ways of transmission of infection.
         Initially, it was believed that the first infection occurred in the seafood market in
-        Wuhan province.
-        But, over time, the transmission path from person to person was confirmed.
+        Wuhan province. \n
+        \t But, over time, the transmission path from person to person was confirmed.
 The main route of transmission of the coronavirus COVID-19 is contact. Sick or carrier sneezing
         and / or coughing, spreads mucus particles that contain the virus. Radius
         spread from a person within 2 meters. In this radius can happen
@@ -62,37 +62,37 @@ The main route of transmission of the coronavirus COVID-19 is contact. Sick or c
         infection occurs.
     </string>
     <string name="About_razrab">
-       This project was carried out by students of Technopark /n
-         Android course 2021 spring /n
-         Nizovtsev Roman /n
-         Svetasheva Julia /n
-         Dragoon Ilya /n
+       This project was carried out by students of Technopark \n
+         Android course 2021 spring \n
+         Nizovtsev Roman \n
+         Svetasheva Julia \n
+         Dragoon Ilya \n
          We tried very hard!
     </string>
     <string name="Feedback">Feedback</string>
-    <string name="Way">Ways of transmission of coronavirus</string>
+    <string name="Way">Ways of transmission</string>
     <string name="feed_back_click">
-      We look forward to your feedback and suggestions! /n
-         I hope our application was useful for you. /n
-         You can get answers to interesting questions by this mail /n
+      We look forward to your feedback and suggestions! \n
+         I hope our application was useful for you. \n
+         You can get answers to interesting questions by this mail \n
         tut_nichego_net@mail.ru
     </string>
 
     <string name="Simpom">Symptoms of a coronavirus infection</string>
     <string name="Simpom2">
-    fever in 99 percent of cases
-    weakness, fatigue in 70 percent of cases
-    dry cough in 59 percent of cases
-    loss of appetite in 40 percent of cases
-    muscle pain in 35 percent of cases
-    shortness of breath in 31 percent of cases
-    coughing up phlegm in 27 percent of cases
-    Other less common symptoms include headache,
-    sore throat, and rhinorrhea (nasal discharge).
-    In addition to respiratory symptoms, there are also
-    gastrointestinal symptoms such as nausea and diarrhea.
+   \t Fever in 99 percent of cases. \n
+   \t Weakness, fatigue in 70 percent of cases. \n
+    \t Dry cough in 59 percent of cases. \n
+   \t Loss of appetite in 40 percent of cases. \n
+   \t Muscle pain in 35 percent of cases. \n
+   \t Shortness of breath in 31 percent of cases. \n
+  \t  Coughing up phlegm in 27 percent of cases. \n
+   \t Other less common symptoms include headache,
+    sore throat, and rhinorrhea (nasal discharge). \n
+   \t In addition to respiratory symptoms, there are also
+    gastrointestinal symptoms such as nausea and diarrhea. \n
 
-    As you can see, the most common symptom of coronavirus
+    \t As you can see, the most common symptom of coronavirus
     infection is fever. But it should be noted that the temperature
     level is also not indicative. So, out of 1,099 patients admitted to a hospital in Wuhan with
     COVID-19, temperatures above 37.5 degrees were observed in only 44% of patients.</string>

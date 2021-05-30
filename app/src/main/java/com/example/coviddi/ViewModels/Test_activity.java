@@ -1,4 +1,4 @@
-package com.example.coviddi;
+package com.example.coviddi.ViewModels;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.example.coviddi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -175,15 +176,7 @@ public class Test_activity extends AppCompatActivity {
                     }
                 });
     }
-/*
-    @Override
-    public void onBackPressed() {
-        try{
-            Intent intent=new Intent(Test_activity.this,  MainActivity.class);
-            startActivity(intent);
-            finish();
-        }catch(Exception e){}
-    }*/
+
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if (id==android.R.id.home) {

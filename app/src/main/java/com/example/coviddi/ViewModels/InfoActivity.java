@@ -1,4 +1,4 @@
-package com.example.coviddi;
+package com.example.coviddi.ViewModels;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,8 +12,11 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.coviddi.R;
+
 public class InfoActivity extends AppCompatActivity {
     ImageView Back_Info;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +28,10 @@ public class InfoActivity extends AppCompatActivity {
         Log.e("Язык", Resources.getSystem().getConfiguration().locale.getLanguage());
 
     }
-    public boolean onOptionsItemSelected(MenuItem item){
+
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id==android.R.id.home) {
+        if (id == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);

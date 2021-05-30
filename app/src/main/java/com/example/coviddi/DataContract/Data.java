@@ -14,6 +14,7 @@ public class Data {
         public final static String COLUMN_DEATHS = "Deaths";
 
     }
+
     public static final class DataGraphin implements BaseColumns {
         public final static String TABLE_NAME = "StatForGraph";
 
