@@ -3,9 +3,11 @@ package com.example.coviddi.DataPresenter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.coviddi.DataContract.Data;
 import com.example.coviddi.DataContract.DataDbHelper;
 import com.example.coviddi.DataModels.post1;
@@ -31,7 +33,6 @@ public class model {
     String DateNow;
     SQLiteDatabase dB;
     Presenter presenter;
-
 
     public model(Presenter pres) {
         this.presenter = pres;
@@ -238,6 +239,7 @@ public class model {
                         .getColumnIndex(Data.DataGraphin.COLUMN_CONFIRMED)));
             }
             presenter.releaseGraph(TipoMap);
+
             cursor2.close();
             return true;
         } else {

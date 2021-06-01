@@ -4,6 +4,7 @@ import android.content.Context;
 
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,12 +35,14 @@ public class Presenter {
     private MainInterface view;
     TextView DateText;
     GraphView graphView;
+    LottieAnimationView load;
     private final com.example.coviddi.DataPresenter.model model;
 
-    public Presenter(MainInterface view, TextView DateText, GraphView graphView) {
+    public Presenter(MainInterface view, TextView DateText, GraphView graphView, LottieAnimationView load) {
         this.DateText = DateText;
         this.graphView = graphView;
         this.view = view;
+        this.load = load;
         model = new model(this);
     }
 
@@ -130,6 +134,7 @@ public class Presenter {
         dotSeries = new PointsGraphSeries<>();
         graphView.addSeries(dotSeries);
 
+
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
@@ -160,6 +165,8 @@ public class Presenter {
         sortedMap.clear();
 
         graphView.getViewport().setXAxisBoundsManual(true);
+
+       load.setVisibility(LottieAnimationView.INVISIBLE);
     }
 
 
@@ -176,15 +183,20 @@ public class Presenter {
     }
 
     public void loadCache(int selected) {
+
         String country = view.getCountry()[selected];
         if (model.getFromSQL(country) == false) {
             loadInfos(selected);
             Log.e("Данные для статистики", "Взяты из сети");
+            load.setVisibility(View.VISIBLE);
+
         }
-        if (model.getFromSQLGraph(country) == false) {
+       /* if (model.getFromSQLGraph(country) == false) {
             loadInfoGraph(selected);
             Log.e("Данные для Графика", "Взяты из сети");
-        }
+            load.setVisibility(View.VISIBLE);
+
+        }*/
 
     }
 

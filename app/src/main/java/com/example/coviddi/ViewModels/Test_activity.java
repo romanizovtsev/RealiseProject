@@ -111,7 +111,7 @@ public class Test_activity extends AppCompatActivity {
                                     check.setText(getResources().getText(R.string.check));
                                     check.setLayoutParams(
                                             new LinearLayout.LayoutParams(
-                                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                                    LinearLayout.LayoutParams.WRAP_CONTENT,
                                                     LinearLayout.LayoutParams.WRAP_CONTENT)
                                     );
                                     check.setId(R.id.check);
@@ -164,7 +164,8 @@ public class Test_activity extends AppCompatActivity {
                                         }
                                     });
                                     //check.setBackground(R.drawable.buttonround);
-                                    check.setBackground(ContextCompat.getDrawable(Test_activity.this, R.drawable.buttonround));
+                                    check.setBackground(ContextCompat.getDrawable(Test_activity.this, R.drawable.ripple_effect));
+                                    check.setTextColor(getResources().getColor(R.color.white));
                                     linear.addView(check);
 
                                 }

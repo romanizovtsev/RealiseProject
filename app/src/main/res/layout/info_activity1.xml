@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/up"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
         <TextView
@@ -33,11 +33,13 @@
 
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="match_parent"
-                android:layout_height="283dp"
-                app:srcCompat="@drawable/covid" />
+                android:layout_height="276dp"
+                app:lottie_loop="true"
+                app:lottie_fileName="virus.json"
+                app:lottie_autoPlay="true"
+                />
 
             <TextView
                 android:id="@+id/textView6"
@@ -93,11 +95,14 @@
                 android:text="@string/Simpom2"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/imageView3"
+            <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="match_parent"
-                android:layout_height="283dp"
-                app:srcCompat="@drawable/per" />
+                android:layout_height="276dp"
+                app:lottie_loop="true"
+                app:lottie_fileName="covid_phones.json"
+                app:lottie_autoPlay="true"
+                />
+
 
 
         </LinearLayout>

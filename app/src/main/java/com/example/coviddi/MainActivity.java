@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.coviddi.DataContract.DataDbHelper;
 import com.example.coviddi.ViewInterface.MainInterface;
 import com.example.coviddi.ViewModels.InfoActivity;
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
     ImageButton button_settings;
     Button Read_info;
     int flagOpen;
+    LottieAnimationView loading;
     Button Start_test;
     SharedPreferences sPref;
     Spinner spinner;
-
     int flagcome;
 
     @Override
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         flagOpen = 0;
-
         if (savedInstanceState != null)
             switch (savedInstanceState.getInt("flagOpen")) {
                 case 1:
@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
         NumbRecov = findViewById(R.id.NumbRecov);
         NumbDeath = findViewById(R.id.NumbDeath);
         DateText = findViewById(R.id.Date);
-
+        loading = (LottieAnimationView) findViewById(R.id.loading);
         graphView = (GraphView) findViewById(R.id.graphView);
-        presenter = new Presenter(this, DateText, graphView);
+        presenter = new Presenter(this, DateText, graphView, loading);
 
         AllArray = getResources().getStringArray(R.array.Country);
         spinner = findViewById(R.id.spinner);
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface {
                     presenter.loadCache(selected1);
                     flagcome = 1;
                 } else {
+
                     selected1 = selectedItemPosition;
                     presenter.loadCache(selected1);
                     sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

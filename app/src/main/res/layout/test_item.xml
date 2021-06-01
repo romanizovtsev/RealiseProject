@@ -8,22 +8,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/back">
+        android:background="@drawable/test_question1">
 
         <TextView
             android:id="@+id/question"
 
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,28 +33,34 @@
             android:id="@+id/RadGr"
 
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/question">
 
             <RadioButton
                 android:id="@+id/answer1"
+                android:textColor="@color/white"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/up"
+                android:buttonTint="@color/white"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/answer2"
+                android:textColor="@color/white"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/up"
+                android:buttonTint="@color/white"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/answer3"
+                android:textColor="@color/white"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/up"
+                android:buttonTint="@color/white"
                 android:text="RadioButton" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>

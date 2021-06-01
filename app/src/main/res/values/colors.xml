@@ -6,12 +6,19 @@
     <color name="Red">#FF0000</color>
     <color name="Green">#28A428</color>
     <color name="black">#FF000000</color>
-    <color name="teal_200">#8aa8c4</color>
+    <color name="teal_200">#80CBC4</color>
     <color name="teal_700">#8aa8c4</color>
     <color name="grey_W">#eaeaf5</color>
     <color name="grey_B">#555558</color>
     <color name="up">#8aa8c4</color>
     <color name="bluelight">#ebf3fa</color>
-
+    <color name="basilorange">#fd5523</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#ec8303  </color>
+    <color name="colorPrimaryLight">#ffecd8  </color>
+    <color name="colorPrimaryMedium">#faa859 </color>
+
+    <color name="colorPrimaryDark">#ec8303</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bottom_sheet_menu">#C33BDA</color>
 </resources>

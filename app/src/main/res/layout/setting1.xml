@@ -6,114 +6,146 @@
     android:layout_height="match_parent">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-131dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/up"
+            android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
+            app:theme="@style/ThemeOverlay.AppCompat"
+         >
+
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                android:text="@string/Settings"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:text="@string/Settings" />
-        </androidx.appcompat.widget.Toolbar>
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:background="@drawable/back6"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/lang"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="7dp"
-                android:text="@string/Language"
-                android:textColor="@color/grey_B"
-                android:textSize="30dp" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="50dp"
-                android:layout_height="28dp"
-                android:layout_weight="1" />
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <TextView
+            android:id="@+id/lang"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+
+            android:text="@string/Language"
+            android:textColor="@color/grey_B"
+            android:textSize="28dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
 
             <Button
                 android:id="@+id/rus"
-                android:layout_width="110dp"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="7dp"
-                android:layout_marginLeft="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttdark"
+                android:background="@drawable/ripple_effect"
                 android:text="@string/RUS"
                 android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/en"
-                android:layout_width="110dp"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="7dp"
                 android:layout_marginLeft="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttdark"
+                android:background="@drawable/ripple_effect"
+
                 android:text="@string/EN"
                 android:textColor="@color/white" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="69dp"
+                android:layout_height="70dp"
+                android:src="@drawable/russia" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="150dp"
+                android:src="@drawable/uk" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@drawable/back6"
+            android:layout_height="89dp"
+            android:layout_marginTop="400dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
-            android:orientation="vertical">
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="67dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="80dp"
+                android:elevation="10dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="info.json"
+                app:lottie_loop="true" />
 
             <Button
                 android:id="@+id/About_app"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_width="132dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ripple_effect"
+                android:text="@string/About_app"
+                android:textColor="@color/white" />
 
-                android:background="@android:color/transparent"
-                android:text="@string/About_app" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="300dp"
-                android:background="@drawable/line1"
-                android:layout_gravity="center"
-                android:layout_height="1dp"
-               />
 
             <Button
                 android:id="@+id/FeedBack"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="@android:color/transparent"
-                android:text="@string/Feedback"/>
+                android:layout_width="132dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="2dp"
+
+                android:background="@drawable/ripple_effect"
+                android:text="@string/Feedback"
+                android:textColor="@color/white" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="81dp"
+                android:layout_height="52dp"
+                android:layout_gravity="end"
+                android:elevation="10dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="feedback.json"
+                app:lottie_loop="true" />
+
+
         </LinearLayout>
 
     </LinearLayout>
