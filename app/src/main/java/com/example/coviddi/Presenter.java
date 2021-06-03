@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.coviddi.DataPresenter.model;
 import com.example.coviddi.ViewInterface.MainInterface;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -111,11 +112,16 @@ public class Presenter {
         graphView.removeAllSeries();
         Log.e(TipoMap.size() + "", "Размер мапки");
         Map<Calendar, Integer> graphMap = new HashMap<Calendar, Integer>();
-
+        Map<Integer, Integer> daysMap = new HashMap<>();
         for (int i = 0; i < TipoMap.size(); i++) {
             int dayOfMonth1 = Integer.parseInt(TipoMap.get(i).split("%")[0].split("-")[2]);
-            graphMap.put(new GregorianCalendar(2021, 3, dayOfMonth1), Integer.parseInt(TipoMap.get(i).split("%")[1]));
+            int month1 = Integer.parseInt(TipoMap.get(i).split("%")[0].split("-")[1]);
+            int year1 = Integer.parseInt(TipoMap.get(i).split("%")[0].split("-")[0]);
+            Calendar date = new GregorianCalendar(year1, month1-1, dayOfMonth1);
+            daysMap.put(dayOfMonth1, date.get(Calendar.DAY_OF_YEAR));
+            graphMap.put(date, Integer.parseInt(TipoMap.get(i).split("%")[1]));
         }
+
         Map<Calendar, Integer> sortedMap = new TreeMap<>(graphMap);
         DataPoint[] Data = new DataPoint[sortedMap.size()];
         int i = 0;
@@ -124,7 +130,7 @@ public class Presenter {
             Calendar date = pair.getKey();
             Integer confirmed = pair.getValue();
             Log.e(date.toString(), confirmed + "");
-            Data[i] = new DataPoint(date.get(Calendar.DAY_OF_MONTH), confirmed);
+            Data[i] = new DataPoint(date.get(Calendar.DAY_OF_YEAR), confirmed);
             i++;
         }
 
@@ -162,11 +168,23 @@ public class Presenter {
         });
         graphView.getGridLabelRenderer().setNumHorizontalLabels(Data.length);
         graphMap.clear();
-        sortedMap.clear();
-
         graphView.getViewport().setXAxisBoundsManual(true);
+        sortedMap.clear();
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
+        ArrayList<String> labels = new ArrayList<String>();
+        for (i=0; i<Data.length;i++){
+            for (Map.Entry<Integer, Integer> pair : daysMap.entrySet()) {
 
-       load.setVisibility(LottieAnimationView.INVISIBLE);
+                int dateMonth = pair.getKey();
+                int dateYear = pair.getValue();
+                if(Data[i].getX()==dateYear) labels.add(Integer.toString(dateMonth));
+            }
+        }
+        String [] labelsX = new String[]{labels.get(0),labels.get(1),labels.get(2),labels.get(3),labels.get(4),labels.get(5),labels.get(6)};
+        staticLabelsFormatter.setHorizontalLabels(labelsX);
+        graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        load.setVisibility(LottieAnimationView.INVISIBLE);
+        //Data = null;
     }
 
 
@@ -191,12 +209,12 @@ public class Presenter {
             load.setVisibility(View.VISIBLE);
 
         }
-       /* if (model.getFromSQLGraph(country) == false) {
+       if (model.getFromSQLGraph(country) == false) {
             loadInfoGraph(selected);
             Log.e("Данные для Графика", "Взяты из сети");
             load.setVisibility(View.VISIBLE);
 
-        }*/
+        }
 
     }
 
