@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,11 +110,11 @@ public class Test_activity extends AppCompatActivity {
                                     }
                                     Button check=new Button(getApplicationContext());
                                     check.setText(getResources().getText(R.string.check));
-                                    check.setLayoutParams(
-                                            new LinearLayout.LayoutParams(
-                                                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                    LinearLayout.LayoutParams.WRAP_CONTENT)
-                                    );
+                                    LinearLayout.LayoutParams param=new LinearLayout.LayoutParams(
+                                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                                    param.gravity= Gravity.CENTER_HORIZONTAL;
+                                    check.setLayoutParams(param);
                                     check.setId(R.id.check);
                                     check.setOnClickListener(new View.OnClickListener() {
                                         @Override
